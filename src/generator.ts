@@ -28,9 +28,9 @@ export interface GeneratorOption {
    */
   columnOptions: GenColOptType
   /**
-   * Fall back column option for each column types.
+   * Fall back column option by each column types.
    */
-  columnOptionsDefault: ColumnOptionDefaultType
+  columnOptionsByType: ColumnOptionByTypeType
   /**
    * This callback function is called each time when rows are generated to modify generated rows.
    * @example
@@ -56,12 +56,12 @@ export interface GeneratorOption {
 export const newGeneratorOption = (obj?: Param<GeneratorOption>): GeneratorOption => ({
   outputFormat: newCsvFormat(),
   columnOptions: {},
-  columnOptionsDefault: { num: newNumericColumnOption(), str: newStringColumnOption(), date: newDatetimeColumnOption(), bool: newBooleanColumnOption() },
+  columnOptionsByType: { num: newNumericColumnOption(), str: newStringColumnOption(), date: newDatetimeColumnOption(), bool: newBooleanColumnOption() },
   size: 10,
   ...obj,
   _tag: 'GeneratorOption',
 });
-type ColumnOptionDefaultType = { num: NumericColumnOption, str: StringColumnOption, date: DatetimeColumnOption, bool: BooleanColumnOption };
+type ColumnOptionByTypeType = { num: NumericColumnOption, str: StringColumnOption, date: DatetimeColumnOption, bool: BooleanColumnOption };
 /** CsvFormat is used for GneratorOption.outputFormat */
 export interface CsvFormat {
   readonly _tag: 'CsvFormat'
@@ -423,7 +423,7 @@ export async function* generate(statement: CreateTableStatement, option: Generat
     let opt;
     if (dataType instanceof types.NumericType) {
       if (colOption && !(colOption._tag === 'NumericColumnOption')) throw new GeneratorFatalError('invalid column option');
-      const nonNullOpt: NumericColumnOption = colOption || option.columnOptionsDefault.num;
+      const nonNullOpt: NumericColumnOption = colOption || option.columnOptionsByType.num;
       const __initialValueNum = typeof nonNullOpt.initialValue === 'function' ? nonNullOpt.initialValue(i) : nonNullOpt.initialValue;
       if (dataType instanceof types.Float) {
         let limit = dataType.precision ? +('9'.repeat(dataType.precision)) : Infinity;
@@ -444,7 +444,7 @@ export async function* generate(statement: CreateTableStatement, option: Generat
     } else if (dataType instanceof types.StringType) {
       if (colOption && !(colOption._tag === 'StringColumnOption')) throw new GeneratorFatalError('invalid column option');
       const isChar = dataType instanceof types.CharacterStringType;
-      const nonNullOpt: StringColumnOption = colOption || option.columnOptionsDefault.str;
+      const nonNullOpt: StringColumnOption = colOption || option.columnOptionsByType.str;
       const maxLength = nonNullOpt.maxLength || dataType.length || 10; // There is no reason for 10 but we need a concrete integer value.
       logger.log('maxLength', dataType.length);
       let __prefixStr:string = typeof nonNullOpt.prefix === 'function' ? nonNullOpt.prefix(i,def.name.value) : nonNullOpt.prefix;
@@ -458,14 +458,14 @@ export async function* generate(statement: CreateTableStatement, option: Generat
       prevColumns.str[i]=initialValue;
     } else if (dataType instanceof types.DatetimeType) {
       if (colOption && !(colOption._tag === 'DatetimeColumnOption')) throw new GeneratorFatalError('invalid column option');
-      const nonNullOpt: DatetimeColumnOption = colOption || option.columnOptionsDefault.date;
+      const nonNullOpt: DatetimeColumnOption = colOption || option.columnOptionsByType.date;
       opt = dataType instanceof types.Date ? newDateColumnOption({ ...nonNullOpt }) :
             dataType instanceof types.Time ? newTimeColumnOption({ ...nonNullOpt }) :
                                              newTimestampColumnOption({ ...nonNullOpt });
       prevColumns.date[i]= dataType instanceof types.Time ? opt.initialValue : new Date(nonNullOpt.initialValue.getTime() - 24*60*60*1000);
     } else if (dataType instanceof types.BooleanType) {
       if (colOption && !(colOption._tag === 'BooleanColumnOption')) throw new GeneratorFatalError('invalid column option');
-      const nonNullOpt: BooleanColumnOption = colOption || option.columnOptionsDefault.bool;
+      const nonNullOpt: BooleanColumnOption = colOption || option.columnOptionsByType.bool;
       opt = newBooleanColumnOption({ ...nonNullOpt });
       prevColumns.bool[i]=!opt.initialValue;
     } else {

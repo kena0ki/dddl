@@ -1,21 +1,20 @@
 {
   "name": "dddl",
   "version": "0.1.0",
-  "description": "Data generator using DDL",
+  "description": "dddl generates test Data from DDL",
   "main": "index.js",
   "files": [
     "dist/"
   ],
   "scripts": {
+    "prepare": "cd demo && npm install",
     "esbuild:lib": "ts-node -P ./script/tsconfig.json ./script/build.ts",
     "build:lib": "tsc -p ./src/tsconfig.json --emitDeclarationOnly && npm run esbuild:lib",
     "watch:lib": "chokidar \"src/**/*\" -c \"npm run build:lib\" --initial --debounce 5000",
-    "esbuild:demo": "ts-node -P ./script/tsconfig.json ./script/build.ts --entryPoints demo/src/index.ts --outdir demo/build",
-    "build:demo": "tsc -p ./demo/tsconfig.json --noEmit && npm run esbuild:demo",
-    "watch:demo": "chokidar \"demo/src/**/*\" \"demo/*.{html,css}\" -c \"npm run build:demo\" --initial --debounce 5000",
+    "build:demo": "cd demo && npm run build",
     "build": "npm run build:lib && npm run build:demo",
-    "serve": "ts-node -P ./script/tsconfig.json ./script/server.ts",
-    "start": "concurrently -p '{time} {name}' -t 'HH:mm:ss.SSS' -c green,yellow,blue  npm:serve npm:watch:lib npm:watch:demo",
+    "dev:demo": "cd demo && npm run dev",
+    "start": "concurrently -p '{time} {name}' -t 'HH:mm:ss.SSS' -c green,yellow  npm:watch:lib npm:dev:demo",
     "test": "jest",
     "test:upd": "npm run test -- -u",
     "cov": "npm run test -- --coverage",
@@ -24,14 +23,17 @@
   },
   "keywords": [
     "test",
+    "table",
     "data",
     "generator",
     "ddl",
     "sql",
-    "database"
+    "database",
+    "db"
   ],
   "author": "kena0ki",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
