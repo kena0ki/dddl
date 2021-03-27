@@ -1,1 +1,1 @@
-(window as any).dddlEnableLog = true;
+window.dddlEnableLog = true;

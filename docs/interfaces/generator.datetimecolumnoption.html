@@ -1,0 +1,296 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DatetimeColumnOption | dddl</title>
+	<meta name="description" content="Documentation for dddl">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">dddl</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">dddl</a>
+				</li>
+				<li>
+					<a href="../modules/generator.html">generator</a>
+				</li>
+				<li>
+					<a href="generator.datetimecolumnoption.html">DatetimeColumnOption</a>
+				</li>
+			</ul>
+			<h1>Interface DatetimeColumnOption</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>DatetimeColumnOption is used for GeneratorOption.columnOptions</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">DatetimeColumnOption</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="generator.datetimecolumnoption.html#_tag" class="tsd-kind-icon">_tag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="generator.datetimecolumnoption.html#initialvalue" class="tsd-kind-icon">initial<wbr>Value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="generator.datetimecolumnoption.html#stepby" class="tsd-kind-icon">step<wbr>By</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="_tag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> _tag</h3>
+					<div class="tsd-signature tsd-kind-icon">_tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;DatetimeColumnOption&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kena0ki/dddl/blob/2cd68e5/src/generator.ts#L292">src/generator.ts:292</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="initialvalue" class="tsd-anchor"></a>
+					<h3>initial<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">initial<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kena0ki/dddl/blob/2cd68e5/src/generator.ts#L300">src/generator.ts:300</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Value of the first row.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1970-01-01T00:00:00.000Z. internal values are same but output format depends on their column types, as shown below. <br>
+									Date      : &#39;1970-01-01&#39; <br>
+									Time      : &#39;00:00:00&#39; <br>
+								Timestamp : &#39;1970-01-01 00:00:00&#39; <br></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stepby" class="tsd-anchor"></a>
+					<h3>step<wbr>By</h3>
+					<div class="tsd-signature tsd-kind-icon">step<wbr>By<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/kena0ki/dddl/blob/2cd68e5/src/generator.ts#L310">src/generator.ts:310</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p> DatetimeColumnOption is used for GeneratorOption.columnOptions <br>
+								Currently this option is not supported yet, so the increment step can&#39;t be changed. <br>
+								The value depends on the table column type. <br>
+								Date type      : 1 day. <br>
+								Time           : 1 second. <br>
+							Timestamp type : 1 day. <br></p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>internal</dt>
+							<dd></dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/datatypes.html">data<wbr>Types</a>
+					</li>
+					<li class="current tsd-kind-namespace">
+						<a href="../modules/generator.html">generator</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/parser.html">parser</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="../classes/generator.generatorfatalerror.html" class="tsd-kind-icon">Generator<wbr>Fatal<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="../classes/generator.generatorvalidationerror.html" class="tsd-kind-icon">Generator<wbr>Validation<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.booleancolumnoption.html" class="tsd-kind-icon">Boolean<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.csvformat.html" class="tsd-kind-icon">Csv<wbr>Format</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.datetimecolumnoption.html" class="tsd-kind-icon">Datetime<wbr>Column<wbr>Option</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="generator.datetimecolumnoption.html#_tag" class="tsd-kind-icon">_tag</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="generator.datetimecolumnoption.html#initialvalue" class="tsd-kind-icon">initial<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="generator.datetimecolumnoption.html#stepby" class="tsd-kind-icon">step<wbr>By</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.fixedvalue.html" class="tsd-kind-icon">Fixed<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.generatoroption.html" class="tsd-kind-icon">Generator<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.insertstatementformat.html" class="tsd-kind-icon">Insert<wbr>Statement<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.numericcolumnoption.html" class="tsd-kind-icon">Numeric<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="generator.stringcolumnoption.html" class="tsd-kind-icon">String<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#generatorresult" class="tsd-kind-icon">Generator<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#length_in_opts" class="tsd-kind-icon">LENGTH_<wbr>IN_<wbr>OPTS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#num_loop_opts" class="tsd-kind-icon">NUM_<wbr>LOOP_<wbr>OPTS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#str_loop_opts" class="tsd-kind-icon">STR_<wbr>LOOP_<wbr>OPTS</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#generate" class="tsd-kind-icon">generate</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newbooleancolumnoption" class="tsd-kind-icon">new<wbr>Boolean<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newcsvformat" class="tsd-kind-icon">new<wbr>Csv<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newdatetimecolumnoption" class="tsd-kind-icon">new<wbr>Datetime<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newfixedvalue" class="tsd-kind-icon">new<wbr>Fixed<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newgeneratoroption" class="tsd-kind-icon">new<wbr>Generator<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newinsertstatementformat" class="tsd-kind-icon">new<wbr>Insert<wbr>Statement<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newnumericcolumnoption" class="tsd-kind-icon">new<wbr>Numeric<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#newstringcolumnoption" class="tsd-kind-icon">new<wbr>String<wbr>Column<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#parseandgenerate" class="tsd-kind-icon">parse<wbr>And<wbr>Generate</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/generator.html#tryparseandgenerate" class="tsd-kind-icon">try<wbr>Parse<wbr>And<wbr>Generate</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -16,15 +16,17 @@ export interface GeneratorOption {
   /** Output format. Either csv or insert statement. */
   outputFormat: CsvFormat|InsertStatementFormat
   /**
-   *  Options for each column to determine how they are generated.
-   *  The options need to be valid types for corresponding columns.
-   *    - Column -             - Option -
-   *    Numeric types          -> NumericColumnOption
-   *    String types           -> StringColumnOption
-   *    Datetime types         -> DatetimeColumnOption
-   *    Boolean types          -> BooleanColumnOption
-   *  If you want fixed values for some columns throughout entire rows,
-   *  you can specify the value using FixedValue.
+   *  Options for each column to determine how they are generated. <br>
+   *  The options need to be valid types for corresponding columns. <br>
+   *  ```xml
+   *  - Column -             - Option -
+   *  Numeric types          -> NumericColumnOption
+   *  String types           -> StringColumnOption
+   *  Datetime types         -> DatetimeColumnOption
+   *  Boolean types          -> BooleanColumnOption
+   *  ```
+   *  If you want fixed values for some columns throughout entire rows, <br>
+   *  you can specify the value using FixedValue. <br>
    */
   columnOptions: GenColOptType
   /**
@@ -32,14 +34,16 @@ export interface GeneratorOption {
    */
   columnOptionsByType: ColumnOptionByTypeType
   /**
-   * This callback function is called each time when rows are generated to modify generated rows.
+   * This callback function is called each time when rows are generated to modify generated rows. <br>
    * @example
+   * ``` typescript
    * // Adds line number to the second column
    * columns.num[1] = columns.num[1] + (process.row + 1);
    * // Adds column name to begining of the fourth column
    * columns.str[3] = process.names[3] + columns.str[3];
    * // Returns modified columns
    * return [columns,tempPrev];
+   * ```
    * @param {ColumnsType} columns Columns to be modified.
    * @param {Readonly<RowProcess>} process Information used for data generation process.
    * @param {object} tempPrev Temporary information taken over from previous time function call.
@@ -65,13 +69,25 @@ type ColumnOptionByTypeType = { num: NumericColumnOption, str: StringColumnOptio
 /** CsvFormat is used for GneratorOption.outputFormat */
 export interface CsvFormat {
   readonly _tag: 'CsvFormat'
-  /** Delimiter of each column. @default ',' */
+  /**
+   * Delimiter of each column.
+   * @default ','
+   */
   delimiter: string
-  /** Quote for each value. @default '"' */
+  /**
+   * Quote for each value.
+   * @default '"'
+   */
   quote: string
-  /** Escape sequence. @default '"' */
+  /**
+   * Escape sequence.
+   * @default '"'
+   */
   escapeSequence: string
-  /** Whether output header or not. @default false */
+  /**
+   * Whether output header or not.
+   * @default false
+   */
   header: boolean
 }
 export const newCsvFormat = (obj?: Partial<CsvFormat>): CsvFormat => ({
@@ -94,17 +110,27 @@ export const NUM_LOOP_OPTS = ['loop','negate','keep'] as const;
 /** NumericColumnOptions is used for GeneratorOption.columnOptions */
 export interface NumericColumnOption {
   readonly _tag: 'NumericColumnOption'
-  /** How much advance per each row. @default 1 for integers, 0.1 for decimals */
+  /**
+   * How much advance per each row.
+   * @default 1 for integers, 0.1 for decimals
+   */
   stepBy?: number
-  /** Value of the first row. @default 1 */
+  /**
+   * Value of the first row.
+   * @default 1
+   */
   initialValue: number|((col:number)=>number)
-  /** Limit of incrementation. @default depend on the corresponding table data type. */
+  /**
+   * Limit of incrementation.
+   * @default depend on the corresponding table data type.
+   */
   limit?: number
   /**
-   * How to behave when incrementation hits the limit. @default loop.
-   *   loop: back to the initial value and continue to increment
-   *   negate: negate the value and continue to increment
-   *   keep: stop incrementation and keep the limit value
+   * How to behave when incrementation hits the limit. <br>
+   *   loop: back to the initial value and continue to increment <br>
+   *   negate: negate the value and continue to increment <br>
+   *   keep: stop incrementation and keep the limit value <br>
+   * @default loop.
    */
   loop: typeof NUM_LOOP_OPTS[number]
 }
@@ -122,7 +148,7 @@ type IntegerColumnOption = Omit<OmitTag<NumericColumnOption>, 'stepBy'> & {
   /** @internal */
   __maxScale: number,
 }
-export const newIntegerColumnOption = (obj?: Param<IntegerColumnOption>): IntegerColumnOption => {
+const newIntegerColumnOption = (obj?: Param<IntegerColumnOption>): IntegerColumnOption => {
   const ret: IntegerColumnOption = {
     ...newNumericColumnOption(obj),
     stepBy: obj?.stepBy || 1,
@@ -145,7 +171,7 @@ type DecimalColumnOption = Omit<OmitTag<NumericColumnOption>, 'stepBy'> & {
   /** @internal */
   __maxScale: number,
 }
-export const newDecimalColumnOption = (obj?: Param<DecimalColumnOption>): DecimalColumnOption => {
+const newDecimalColumnOption = (obj?: Param<DecimalColumnOption>): DecimalColumnOption => {
   const ret: DecimalColumnOption = {
     ...newNumericColumnOption(obj),
     stepBy: obj?.stepBy || 0.1,
@@ -165,19 +191,26 @@ export const LENGTH_IN_OPTS = ['char','byte'] as const;
 /** StringColumnOption is used for GeneratorOption.columnOptions */
 export interface StringColumnOption {
   readonly _tag: 'StringColumnOption',
-  /** Limit of incrementation. @default depend on the corresponding table data type. */
+  /**
+   * Limit of incrementation value.
+   * @default depend on the corresponding table data type.
+   */
   maxLength: number,
   /**
    * Which measurement unit to use, either char or byte.
    * @default char for character string type column, byte for byte string type column
    */
   lengthIn?: typeof LENGTH_IN_OPTS[number],
-  /** Prefix. @default a character in A-Z, a-z, depending on the column position */
+  /**
+   * Prefix.
+   * @default a character in A-Z, a-z, depending on the column position
+   */
   prefix: Prefix,
   /**
-   * How to behave when incrementation hits the limit. @default loop.
-   *   loop: back to the initial value and continue to increment
-   *   keep: stop incrementation and keep the limit value
+   * How to behave when incrementation hits the limit. <br>
+   *   loop: back to the initial value and continue to increment <br>
+   *   keep: stop incrementation and keep the limit value <br>
+   * @default loop.
    */
   loop: typeof STR_LOOP_OPTS[number],
 }
@@ -197,7 +230,7 @@ type CharColumnOption = OmitTag<StringColumnOption> & {
   /** @internal */
   __prefixStrLength: number,
 }
-export const newCharColumnOption = (obj?: Param<CharColumnOption>): CharColumnOption => {
+const newCharColumnOption = (obj?: Param<CharColumnOption>): CharColumnOption => {
   const temp: CharColumnOption = {
     ...newStringColumnOption(obj),
     lengthIn: obj?.lengthIn || 'char',
@@ -216,7 +249,7 @@ type BinaryColumnOption = OmitTag<StringColumnOption> & {
   /** @internal */
   __prefixStrLength: number,
 }
-export const newBinaryColumnOption = (obj?: Param<BinaryColumnOption>): BinaryColumnOption => {
+const newBinaryColumnOption = (obj?: Param<BinaryColumnOption>): BinaryColumnOption => {
   const temp: BinaryColumnOption = {
     ...newStringColumnOption(obj),
     lengthIn: obj?.lengthIn || 'byte',
@@ -259,19 +292,19 @@ export interface DatetimeColumnOption {
   readonly _tag: 'DatetimeColumnOption',
   /**
    * Value of the first row.
-   * @default 1970-01-01T00:00:00.000Z. internal values are same but output format depends on their column types, as shown below.
-   *   Date      : '1970-01-01'
-   *   Time      : '00:00:00'
-   *   Timestamp : '1970-01-01 00:00:00'
+   * @default 1970-01-01T00:00:00.000Z. internal values are same but output format depends on their column types, as shown below. <br>
+   *   Date      : '1970-01-01' <br>
+   *   Time      : '00:00:00' <br>
+   *   Timestamp : '1970-01-01 00:00:00' <br>
    */
   initialValue: Date,
   /**
-   *  DatetimeColumnOption is used for GeneratorOption.columnOptions
-   *   Currently this option is not supported yet, so the increment step can't be changed.
-   *   The value depends on the table column type.
-   *     Date type      : 1 day.
-   *     Time           : 1 second.
-   *     Timestamp type : 1 day.
+   *  DatetimeColumnOption is used for GeneratorOption.columnOptions <br>
+   *   Currently this option is not supported yet, so the increment step can't be changed. <br>
+   *   The value depends on the table column type. <br>
+   *     Date type      : 1 day. <br>
+   *     Time           : 1 second. <br>
+   *     Timestamp type : 1 day. <br>
    *  @internal
    */
   stepBy: number,
@@ -285,7 +318,7 @@ export const newDatetimeColumnOption = (obj?: Param<Omit<DatetimeColumnOption, '
 type DateColumnOption = OmitTag<DatetimeColumnOption> & {
   readonly _tag: 'DateColumnOption'
 }
-export const newDateColumnOption = (obj?: Param<Omit<DateColumnOption, 'stepBy'>>): DateColumnOption => ({
+const newDateColumnOption = (obj?: Param<Omit<DateColumnOption, 'stepBy'>>): DateColumnOption => ({
   ...newDatetimeColumnOption(obj),
   _tag: 'DateColumnOption',
 });
@@ -293,7 +326,7 @@ type TimeColumnOption = OmitTag<DatetimeColumnOption> & {
   /** @internal */
   readonly _tag: 'TimeColumnOption'
 }
-export const newTimeColumnOption = (obj?: Param<Omit<TimeColumnOption, 'stepBy'>>): TimeColumnOption => ({
+const newTimeColumnOption = (obj?: Param<Omit<TimeColumnOption, 'stepBy'>>): TimeColumnOption => ({
   ...newDatetimeColumnOption(obj),
   _tag: 'TimeColumnOption',
 });
@@ -301,18 +334,27 @@ type TimestampColumnOption = OmitTag<DatetimeColumnOption> & {
   /** @internal */
   readonly _tag: 'TimestampColumnOption'
 }
-export const newTimestampColumnOption = (obj?: Param<Omit<TimestampColumnOption, 'stepBy'>>): TimestampColumnOption => ({
+const newTimestampColumnOption = (obj?: Param<Omit<TimestampColumnOption, 'stepBy'>>): TimestampColumnOption => ({
   ...newDatetimeColumnOption(obj),
   _tag: 'TimestampColumnOption',
 });
 /** BooleanColumnOption is used for GeneratorOption.columnOptions */
 export interface BooleanColumnOption {
   readonly _tag: 'BooleanColumnOption',
-  /** Value of the first row. @default false */
+  /**
+   * Value of the first row.
+   * @default false
+   */
   initialValue: boolean,
-  /** Whether randomly generate data or not. @default false */
+  /**
+   * Whether randomly generate data or not.
+   * @default false
+   */
   random: boolean,
-  /** Whether use null value or not. If table column has not-null constraint, this option is ignored. @default false */
+  /**
+   * Whether use null value or not. If table column has not-null constraint, this option is ignored.
+   * @default false
+   */
   useNull: boolean,
 }
 export const newBooleanColumnOption = (obj?: Param<BooleanColumnOption>): BooleanColumnOption => ({
@@ -391,22 +433,26 @@ export async function* parseAndGenerate(src: string, option?: GeneratorOption): 
 }
 
 /**
- * Generates data from a create table statement with options.
- * How data is generated depends on types and options but the general idea is simple.
- * Generator adds 1 to previous data row by row so each column would have sequentially incremented number.
- * Given that we have the following statement,
- *    create table a (
- *      c1 char(5),
- *      c2 integer,
- *      c3 float,
- *      c4 binary(8)
- *    );
+ * Generates data from a create table statement with options. <br>
+ * How data is generated depends on types and options but the general idea is simple. <br>
+ * Generator adds 1 to previous data row by row so each column would have sequentially incremented number. <br>
+ * Given that we have the following statement, <br>
+ * ``` sql
+ *  create table a (
+ *    c1 char(5),
+ *    c2 integer,
+ *    c3 float,
+ *    c4 binary(8)
+ *  );
+ * ```
  * then we would get the following.
- *       c1      c2  c3    c4
- *    L1 "a0001","1","0.1","b0000001"
- *    L2 "a0002","2","0.2","b0000002"
- *    L3 "a0003","3","0.3","b0000003"
- *    L4 "a0004","4","0.4","b0000004"
+ * ```
+ *    c1      c2  c3    c4
+ * L1 "a0001","1","0.1","b0000001"
+ * L2 "a0002","2","0.2","b0000002"
+ * L3 "a0003","3","0.3","b0000003"
+ * L4 "a0004","4","0.4","b0000004"
+ * ```
  */
 export async function* generate(statement: CreateTableStatement, option: GeneratorOption = newGeneratorOption())
   : AsyncGenerator<[GeneratorResult, GeneratorValidationError[]], void, undefined> {

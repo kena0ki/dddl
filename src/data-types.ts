@@ -80,40 +80,76 @@ export class DecimalType extends NumericType {
   private _decimalType = 'nominal'
   constructor(_name: DataTypeNameOptPS, public precision?: number, public scale?: number) { super(_name); }
 }
-export class Char extends CharacterStringType { // Fixed-length character type e.g. CHAR(10)
+/**
+ * Fixed-length character type e.g. CHAR(10)
+ */
+export class Char extends CharacterStringType {
   constructor(_length: number) { super('CHAR', _length); }
 }
-export class Character extends CharacterStringType { // Alias for Char
+/**
+ * Alias of Char
+ */
+export class Character extends CharacterStringType {
   constructor(_length: number) { super('CHARACTER', _length); }
 }
+/**
+ * Alias of Char
+ */
 export class Varchar extends CharacterStringType { // Variable-length character type e.g. VARCHAR(10)
   constructor(_length: number) { super('VARCHAR', _length); }
 }
-export class Clob extends CharacterStringType { // Large character object e.g. CLOB(1000)
+/**
+ * Large character object e.g. CLOB(1000)
+ */
+export class Clob extends CharacterStringType {
   constructor(_length: number) { super('CLOB', _length); }
 }
-export class Binary extends BinaryStringType { // Fixed-length binary type e.g. BINARY(10)
+/**
+ * Fixed-length binary type e.g. BINARY(10)
+ */
+export class Binary extends BinaryStringType {
   constructor(_length: number) { super('BINARY', _length); }
 }
-export class Varbinary extends BinaryStringType { // Variable-length binary type e.g. VARBINARY(10)
+/**
+ * Variable-length binary type e.g. VARBINARY(10)
+ */
+export class Varbinary extends BinaryStringType {
   constructor(_length: number) { super('VARBINARY', _length); }
 }
-export class Blob extends BinaryStringType { // Large binary object e.g. BLOB(1000)
+/**
+ * Large binary object e.g. BLOB(1000)
+ */
+export class Blob extends BinaryStringType {
   constructor(_length: number) { super('BLOB', _length); }
 }
-export class Decimal extends DecimalType { // Decimal type with optional precision and scale e.g. DECIMAL(10,2)
+/**
+ * Decimal type with optional precision and scale e.g. DECIMAL(10,2)
+ */
+export class Decimal extends DecimalType {
   constructor(_p?: number,_s?: number) { super('DECIMAL', _p, _s); }
 }
-export class Dec extends DecimalType { // Alias for Decimal type
+/**
+ * Alias for Decimal type
+ */
+export class Dec extends DecimalType {
   constructor(_p?: number,_s?: number) { super('DEC', _p, _s); }
 }
-export class Number extends DecimalType { // Alias for Decimal type
+/**
+ * Alias for Decimal type
+ */
+export class Number extends DecimalType {
   constructor(_p?: number,_s?: number) { super('NUMBER', _p, _s); }
 }
-export class Numeric extends DecimalType { // Alias for Decimal type
+/**
+ * Alias for Decimal type
+ */
+export class Numeric extends DecimalType {
   constructor(_p?: number,_s?: number) { super('NUMERIC', _p, _s); }
 }
-export class Float extends NumericType { // Floating point with optional precision e.g. FLOAT(8)
+/**
+ * Floating point with optional precision e.g. FLOAT(8)
+ */
+export class Float extends NumericType {
   constructor( public precision?: number) { super('FLOAT'); }
 }
 export class SmallInt extends NumericType { // Small integer
@@ -128,30 +164,36 @@ export class Integer extends NumericType { // Integer
 export class BigInt extends NumericType { // Big integer
   constructor() { super('BIGINT'); }
 }
-export class Real extends NumericType { // Floating point e.g. REAL
+/**
+ * Floating point e.g. REAL
+ */
+export class Real extends NumericType {
   constructor() { super('REAL'); }
 }
-export class DoublePrecision extends NumericType { // Double
+/**
+ * Double
+ */
+export class DoublePrecision extends NumericType {
   constructor() { super('DOUBLE PRECISION'); }
 }
-export class Double extends NumericType { // alias for DoublePrecision
+/**
+ * Alias for DoublePrecision
+ */
+export class Double extends NumericType {
   constructor() { super('DOUBLE'); }
 }
-export class Boolean extends BooleanType { // Boolean
+export class Boolean extends BooleanType {
   constructor() { super('BOOLEAN'); }
 }
-export class Date extends DatetimeType { // Date
+export class Date extends DatetimeType {
   constructor() { super('DATE'); }
 }
-export class Time extends DatetimeType { // Time
+export class Time extends DatetimeType {
   constructor() { super('TIME'); }
 }
-export class Timestamp extends DatetimeType { // Timestamp
+export class Timestamp extends DatetimeType {
   constructor() { super('TIMESTAMP'); }
 }
-// export class Text extends DataType { // Text
-//   constructor() { super('TEXT'); }
-// }
 
 const SMALLINT = new SmallInt;
 const INT = new Int;

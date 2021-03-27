@@ -113,6 +113,9 @@ export class ParseError extends Error {
   public tag = 'ParseError'
 }
 
+/**
+ * Parse create statements
+ */
 export const parse = (src: string): CreateTableStatement[]|ParseError => {
   const result = tk.tokenize(src);
   if (result instanceof TokenizeError) {

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "prebuild": "tsc && eslint",
     "build": "vite build",
     "serve": "vite preview",
     "esbuild": "ts-node -P ./script/tsconfig.json ./script/build.ts"
