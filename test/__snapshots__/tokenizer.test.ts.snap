@@ -1,0 +1,536 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenize 001. tokenize create statement: Create table 1`] = `
+Array [
+  Word {
+    "_value": "create",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "table",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  DelimitedIdent {
+    "_content": "ITEM",
+    "_delimiter": "\\"",
+    "_value": "\\"ITEM\\"",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  LParen {
+    "_value": "(",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "id",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "char",
+  },
+  LParen {
+    "_value": "(",
+  },
+  Number {
+    "_value": "10",
+  },
+  RParen {
+    "_value": ")",
+  },
+  Comma {
+    "_value": ",",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "price",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "decimal",
+  },
+  LParen {
+    "_value": "(",
+  },
+  Number {
+    "_value": "10",
+  },
+  Comma {
+    "_value": ",",
+  },
+  Number {
+    "_value": "3",
+  },
+  RParen {
+    "_value": ")",
+  },
+  Comma {
+    "_value": ",",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Cmmnt {
+    "_value": "/* yen */",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Cmmnt {
+    "_value": "-- qty int,",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  RParen {
+    "_value": ")",
+  },
+  Operator {
+    "_value": ";",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+]
+`;
+
+exports[`tokenize 002. tokenize select statement: query 1`] = `
+Array [
+  NewLine {
+    "_value": "
+",
+  },
+  Word {
+    "_value": "SELECT",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  HexStringLiteral {
+    "_content": "hex string",
+    "_prefix": "X",
+    "_value": "X'hex string'",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "||",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  HexStringLiteral {
+    "_content": "hex string2",
+    "_prefix": "x",
+    "_value": "x'hex string2'",
+  },
+  Comma {
+    "_value": ",",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  NationalStringLiteral {
+    "_content": "national string",
+    "_prefix": "N",
+    "_value": "N'national string'",
+  },
+  Comma {
+    "_value": ",",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  SingleQuotedString {
+    "_content": "character '' string",
+    "_value": "'character '' string'",
+  },
+  Comma {
+    "_value": ",",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Number {
+    "_value": "1",
+  },
+  Operator {
+    "_value": "+",
+  },
+  Number {
+    "_value": "2",
+  },
+  Operator {
+    "_value": "-",
+  },
+  Number {
+    "_value": "3",
+  },
+  Operator {
+    "_value": "/",
+  },
+  Number {
+    "_value": "4",
+  },
+  Operator {
+    "_value": "*",
+  },
+  Number {
+    "_value": "5",
+  },
+  Operator {
+    "_value": "%",
+  },
+  Number {
+    "_value": "6",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Word {
+    "_value": "from",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "A@B",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "C",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "D",
+  },
+  Comma {
+    "_value": ",",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "_E",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Comma {
+    "_value": ",",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "#F",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+  Word {
+    "_value": "where",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "!",
+  },
+  LParen {
+    "_value": "(",
+  },
+  Word {
+    "_value": "D",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "d",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "=",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "e",
+  },
+  RParen {
+    "_value": ")",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "and",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "D",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "d",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "!=",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "e",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "and",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "D",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "d",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "<>",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "e",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "and",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "D",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "d",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": "<",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "e",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "and",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "D",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "d",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Operator {
+    "_value": ">",
+  },
+  Whitespace {
+    "_value": " ",
+  },
+  Word {
+    "_value": "E",
+  },
+  Operator {
+    "_value": ".",
+  },
+  Word {
+    "_value": "e",
+  },
+  Operator {
+    "_value": ";",
+  },
+  NewLine {
+    "_value": "
+",
+  },
+]
+`;
+
+exports[`tokenize 003. tokenize operators: operators 1`] = `
+Array [
+  Operator {
+    "_value": "\\\\",
+  },
+  Operator {
+    "_value": "[",
+  },
+  Operator {
+    "_value": "]",
+  },
+  Operator {
+    "_value": "&",
+  },
+  Operator {
+    "_value": "^",
+  },
+  Operator {
+    "_value": "{",
+  },
+  Operator {
+    "_value": "}",
+  },
+  Operator {
+    "_value": "~",
+  },
+  Word {
+    "_value": "#",
+  },
+]
+`;
+
+exports[`tokenize 004. tokenize error: error 1`] = `[Error: Tokenize error at row: 1, column: 8. Unterminated string literal.]`;
+
+exports[`tokenize 005. tokenize error: error 1`] = `[Error: Tokenize error at row: 1, column: 15. Expected close delimiter " before EOF.]`;
+
+exports[`tokenize 006. tokenize error: error 1`] = `[Error: Tokenize error at row: 2, column: 12. Unexpected EOF while in a multi-line comment.]`;
