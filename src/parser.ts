@@ -61,7 +61,7 @@ class ColumnOptionDef {
   ) {}
 }
 export class TableConstraint {
-  public tag = 'TableConstraint'
+  public _tag = 'TableConstraint'
 }
 export class Unique extends TableConstraint {
   constructor(
@@ -110,7 +110,7 @@ class Eof {
 const EOF = new Eof;
 
 export class ParseError extends Error {
-  public tag = 'ParseError'
+  public _tag = 'ParseError'
 }
 
 /**
@@ -544,7 +544,7 @@ const tryParseDataType = (tokenSet: TokenSet, start: number): ParseResult<undefi
     return parseDataType(tokenSet, idx);
   } catch(err) {
     if (err instanceof ParseError
-      || 'parseError' in err // ts-node(ts-jest) incorrectly return false even if err is an instance of ParseError. so we need an extra route for it.
+      || ('ParseError' === err._tag) // ts-node(ts-jest) incorrectly return false even if err is an instance of ParseError. so we need an extra route for it.
     ) return [idx, undefined];
     throw err;
   }

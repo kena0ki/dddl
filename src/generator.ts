@@ -1,4 +1,5 @@
-import { CreateTableStatement, TableConstraint, parser, ParseError } from './parser';
+import { TextEncoder, TextDecoder } from 'util';
+import { CreateTableStatement, TableConstraint, parser } from './parser';
 import { dataTypes as types } from './data-types';
 import { columnOptions as co } from './column-options';
 import { logger,add,subtract } from './util';
@@ -408,29 +409,29 @@ export class GeneratorValidationError extends Error {
 /** GeneratorResult has result of data generation */
 export type GeneratorResult = { columns: (string|undefined)[], row: string };
 
-export async function tryParseAndGenerate(src: string, option?: GeneratorOption): Promise<string[]> {
-  const result = parser.parse(src);
-  if (result instanceof ParseError) throw result;
-  const stmts = result;
-  const rows:string[]=[];
-  for (const stmt of stmts) {
-    for await (const [result, errors] of generate(stmt, option)) {
-      if (errors.length > 0) throw errors;
-      rows.push(result.row);
-    }
-  }
-  return rows;
-}
-export async function* parseAndGenerate(src: string, option?: GeneratorOption): AsyncGenerator<[GeneratorResult, GeneratorValidationError[]], void, undefined> {
-  const result = parser.parse(src);
-  if (result instanceof ParseError) throw result;
-  const stmts = result;
-  for (const stmt of stmts) {
-    for await (const result of generate(stmt, option)) {
-      yield result;
-    }
-  }
-}
+// export async function tryParseAndGenerate(src: string, option?: GeneratorOption): Promise<string[]> {
+//   const result = parser.parse(src);
+//   if (result instanceof ParseError) throw result;
+//   const stmts = result;
+//   const rows:string[]=[];
+//   for (const stmt of stmts) {
+//     for await (const [result, errors] of generate(stmt, option)) {
+//       if (errors.length > 0) throw errors;
+//       rows.push(result.row);
+//     }
+//   }
+//   return rows;
+// }
+// export async function* parseAndGenerate(src: string, option?: GeneratorOption): AsyncGenerator<[GeneratorResult, GeneratorValidationError[]], void, undefined> {
+//   const result = parser.parse(src);
+//   if (result instanceof ParseError) throw result;
+//   const stmts = result;
+//   for (const stmt of stmts) {
+//     for await (const result of generate(stmt, option)) {
+//       yield result;
+//     }
+//   }
+// }
 
 /**
  * Generates data from a create table statement with options. <br>
@@ -638,6 +639,7 @@ export async function* generate(statement: CreateTableStatement, option: Generat
     if (errs) errors.push(...errs);
     const row = option.outputFormat._tag === 'CsvFormat' ? toCsv(columnsStr, option.outputFormat) : toInsert(columnsStr, tableName);
     prevColumns=columns;
+    logger.log('Generated row:', row);
     yield [{ columns: columnsStr, row }, errors];
   }
 }

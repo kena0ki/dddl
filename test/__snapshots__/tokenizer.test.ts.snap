@@ -528,9 +528,3 @@ Array [
   },
 ]
 `;
-
-exports[`tokenize 004. tokenize error: error 1`] = `[Error: Tokenize error at row: 1, column: 8. Unterminated string literal.]`;
-
-exports[`tokenize 005. tokenize error: error 1`] = `[Error: Tokenize error at row: 1, column: 15. Expected close delimiter " before EOF.]`;
-
-exports[`tokenize 006. tokenize error: error 1`] = `[Error: Tokenize error at row: 2, column: 12. Unexpected EOF while in a multi-line comment.]`;

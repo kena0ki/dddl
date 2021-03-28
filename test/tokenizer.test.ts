@@ -1,4 +1,4 @@
-import { tokenize  } from '../src/tokenizer';
+import { tokenize, TokenizeError  } from '../src/tokenizer';
 import { logger } from '../src/util';
 import { promises as fs } from 'fs';
 import * as path from 'path';
@@ -13,7 +13,7 @@ describe('tokenize', () => {
     const file = path.join(__dirname, `sql/tokenizer_001.sql`);
     const sql = await fs.readFile(file, 'utf8');
     const tokenSet = tokenize(sql);
-    logger.log(tokenSet.tokens);
+    logger.log(tokenSet);
     expect(tokenSet).toMatchSnapshot('Create table');
   });
   test(`002. tokenize select statement`, async () => {
@@ -21,6 +21,7 @@ describe('tokenize', () => {
     const file = path.join(__dirname, `sql/tokenizer_002.sql`);
     const sql = await fs.readFile(file, 'utf8');
     const tokenSet = tokenize(sql);
+    if (tokenSet instanceof TokenizeError) throw new Error();
     logger.log('time:', Date.now() - start);
     logger.log(tokenSet.toString());
     logger.log(tokenSet.joinValues(''));
