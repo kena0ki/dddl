@@ -3,10 +3,10 @@ import { logger } from '../src/util';
 import { promises as fs } from 'fs';
 import * as path from 'path';
 
-class A extends Object {
-  get hoge() { return 1;}
-}
-console.log('hogeeeee', (new A).hoge);
+// class A extends Object {
+//   get hoge() { return 1;}
+// }
+// console.log('hogeeeee', (new A).hoge);
 
 describe('tokenize', () => {
   test(`001. tokenize create statement`, async () => {

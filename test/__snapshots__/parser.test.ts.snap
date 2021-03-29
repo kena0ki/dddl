@@ -379,7 +379,7 @@ Array [
     ],
     "constraints": Array [
       Check {
-        "_tag": "TableConstraint",
+        "_tableConstraint": "nominal",
         "expr": BinaryOp {
           "left": Identifier {
             "ident": Ident {

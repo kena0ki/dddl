@@ -1,9 +1,10 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import { build } from 'esbuild';
 
 const argv = yargs(hideBin(process.argv)).argv;
 
-require('esbuild').build({
+build({
   entryPoints: [argv.entryPoints || 'src/index.ts'],
   bundle: true,
   minify: true,
@@ -11,5 +12,6 @@ require('esbuild').build({
   target: ['es2019'],
   outdir: argv.outdir || 'dist',
   format: 'esm',
+  external: ['util'],
 }).catch(() => process.exit(1));
 

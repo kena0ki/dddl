@@ -524,6 +524,7 @@ export default defineComponent({
 .input-area-create-statement {
   width: 90%;
   height: 100%;
+  margin: auto;
   text-align: left;
 }
 .input-area-button,

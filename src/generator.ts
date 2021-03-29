@@ -1,8 +1,15 @@
-import { TextEncoder, TextDecoder } from 'util';
-import { CreateTableStatement, TableConstraint, parser } from './parser';
+import { CreateTableStatement, TableConstraint, parser, ParseError } from './parser';
 import { dataTypes as types } from './data-types';
 import { columnOptions as co } from './column-options';
 import { logger,add,subtract } from './util';
+let TextEncoder: typeof globalThis.TextEncoder;
+let TextDecoder: typeof globalThis.TextDecoder;
+if (typeof window?.TextEncoder === 'undefined') {
+  ({ TextEncoder, TextDecoder } = require('util'));
+} else {
+  TextEncoder = window.TextEncoder;
+  TextDecoder = window.TextDecoder;
+}
 
 type ColumnOptionUnion = NumericColumnOption|StringColumnOption|DatetimeColumnOption|BooleanColumnOption;
 type GenColOptType = { [columnName: string]: ColumnOptionUnion|FixedValue|undefined };
@@ -409,19 +416,26 @@ export class GeneratorValidationError extends Error {
 /** GeneratorResult has result of data generation */
 export type GeneratorResult = { columns: (string|undefined)[], row: string };
 
-// export async function tryParseAndGenerate(src: string, option?: GeneratorOption): Promise<string[]> {
-//   const result = parser.parse(src);
-//   if (result instanceof ParseError) throw result;
-//   const stmts = result;
-//   const rows:string[]=[];
-//   for (const stmt of stmts) {
-//     for await (const [result, errors] of generate(stmt, option)) {
-//       if (errors.length > 0) throw errors;
-//       rows.push(result.row);
-//     }
-//   }
-//   return rows;
-// }
+/**
+ * Parse a create statement and generate data.
+ * @throws {ParseError} If parse failed.
+ * @throws {GeneratorFatalError} If generation failed.
+ */
+export async function parseAndGenerate(src: string, option?: GeneratorOption): Promise<[rows: string[], errors: GeneratorValidationError[]]> {
+  const parseResult = parser.parse(src);
+  if (parseResult instanceof ParseError) throw parseResult;
+  const stmts = parseResult;
+  const rows:string[]=[];
+  const validateErrors: GeneratorValidationError[] = [];
+  if (stmts.length > 0) {
+    const stmt = stmts[0];
+    for await (const [result, errors] of generate(stmt, option)) {
+      if (errors.length > 0) validateErrors.push(...errors);
+      rows.push(result.row);
+    }
+  }
+  return [rows, validateErrors];
+}
 // export async function* parseAndGenerate(src: string, option?: GeneratorOption): AsyncGenerator<[GeneratorResult, GeneratorValidationError[]], void, undefined> {
 //   const result = parser.parse(src);
 //   if (result instanceof ParseError) throw result;
@@ -435,7 +449,7 @@ export type GeneratorResult = { columns: (string|undefined)[], row: string };
 
 /**
  * Generates data from a create table statement with options. <br>
- * How data is generated depends on types and options but the general idea is simple. <br>
+ * How data is generated depends on column types and options but the general idea is simple. <br>
  * Generator adds 1 to previous data row by row so each column would have sequentially incremented number. <br>
  * Given that we have the following statement, <br>
  * ``` sql

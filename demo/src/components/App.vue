@@ -10,7 +10,9 @@
   <a href="https://github.com/kena0ki/dddl">
     <img class="gh-ribbon" src="../assets/forkme_right_red_aa0000.svg">
   </a>
-  <Demo />
+  <div class="main-area">
+    <Demo />
+  </div>
   <div class="footer-container">
     <div class="footer">Made by kena0ki</div>
   </div>
@@ -55,6 +57,12 @@ export default defineComponent({
   flex-wrap: wrap;
   white-space: pre-wrap;
   width: 90%;
+}
+
+.main-area {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
 }
 
 .footer-container {

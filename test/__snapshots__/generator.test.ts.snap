@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generate 001. parse and generate: generate 1`] = `
+exports[`generate 001. parse and generate: errors 1`] = `Array []`;
+
+exports[`generate 001. parse and generate: rows 1`] = `
 Array [
   "\\"A000000001\\",\\"1.0\\",\\"1\\",\\"B0000000000000000001\\",\\"C1\\",\\"1.0\\",\\"false\\",\\"1970-01-01 00:00:00\\",\\"1970-01-01\\",\\"0:0:1\\"",
   "\\"A000000002\\",\\"1.1\\",\\"2\\",\\"B0000000000000000002\\",\\"C2\\",\\"1.1\\",\\"true\\",\\"1970-01-02 00:00:00\\",\\"1970-01-02\\",\\"0:0:2\\"",

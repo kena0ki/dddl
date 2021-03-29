@@ -16,13 +16,10 @@ body {
 }
 #app {
   width: 100%;
-  max-width: 700px;
+  margin: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  /*
-  margin-top: 60px;
-  */
 }
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
