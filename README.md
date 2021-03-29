@@ -1,5 +1,4 @@
 # dddl
-
 dddl generates test Data from DDL (i.e. create table statements). <br>
 How data is generated depends on column types and options but the general idea is simple. <br>
 Generator adds 1 to previous data row by row so each column would have sequentially incremented number. <br>
@@ -20,8 +19,10 @@ L2 "a0002","2","0.2","b0000002"
 L3 "a0003","3","0.3","b0000003"
 L4 "a0004","4","0.4","b0000004"
 ```
+> This library is not yet stable. Any features or APIs are subject to change even if its minor version is updated.
+
 ## Getting started
-### Install
+### Installation
 ``` sh
 npm install dddl
 ```
@@ -41,18 +42,25 @@ try {
     // error -> parse error or data generation error
 }
 ```
+
 ## Working demo
-here
+[Here](https://dddl-api.netlify.app/modules/datatypes.html)
+
 ## Options
-See API reference.
+See [API reference](https://dddl-api.netlify.app/interfaces/generator.generatoroption.html)
+
 ## Supported types
-See API reference.
+See [API reference](https://dddl-api.netlify.app/modules/datatypes.html)
+
 ## Data validation
 Currently followings are supported.
  - PRIMARY KEY constraint
  - UNIQUE KEY constraint
  - NOT NULL constraint
+
 ## SQL parser
-SQL syntax quite depends on DBMS, so the create statement you have may or may not be valid for this library. <br>
-However this library basically comprises with the ANSI standards since the parser part of this library has been translated and ported from the Rust project named sqlparser-rs, which is comprises with the standard, so hopefully the core part of your create statement (i.e. column definition) is valid for this library.
+SQL syntax quite depends on DBMSs, so the create statement you have may or may not be valid for this library. <br>
+However this library basically comforms with [the ANSI standards](https://en.wikipedia.org/wiki/ISO/IEC_9075) since the parser part of this library has been translated and ported from the Rust project named [sqlparser-rs](https://github.com/ballista-compute/sqlparser-rs), which aims to comform with the standard, so hopefully the core part of your create statement (i.e. column definition) is valid for this library.
+
 ## Lisence
+Apache License 2.0

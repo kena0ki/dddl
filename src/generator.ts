@@ -11,12 +11,14 @@ if (typeof window?.TextEncoder === 'undefined') {
   TextDecoder = window.TextDecoder;
 }
 
-type ColumnOptionUnion = NumericColumnOption|StringColumnOption|DatetimeColumnOption|BooleanColumnOption;
-type GenColOptType = { [columnName: string]: ColumnOptionUnion|FixedValue|undefined };
 type Prefix = string|((col: number, colName: string) => string);
 // type Structual<T> = T extends Function | Array<any> ? T : T extends object ? { [K in keyof T]: Structual<T[K]> } : T;
 type OmitTag<T> = Omit<T, '_tag'>;
 type Param<T> = Partial<OmitTag<T>>;
+
+export type ColumnOptionUnion = NumericColumnOption|StringColumnOption|DatetimeColumnOption|BooleanColumnOption;
+export type GenColOptType = { [columnName: string]: ColumnOptionUnion|FixedValue|undefined };
+export type ColumnOptionByTypeType = { num: NumericColumnOption, str: StringColumnOption, date: DatetimeColumnOption, bool: BooleanColumnOption };
 
 /** Options for data to be generated. */
 export interface GeneratorOption {
@@ -73,7 +75,6 @@ export const newGeneratorOption = (obj?: Param<GeneratorOption>): GeneratorOptio
   ...obj,
   _tag: 'GeneratorOption',
 });
-type ColumnOptionByTypeType = { num: NumericColumnOption, str: StringColumnOption, date: DatetimeColumnOption, bool: BooleanColumnOption };
 /** CsvFormat is used for GneratorOption.outputFormat */
 export interface CsvFormat {
   readonly _tag: 'CsvFormat'
