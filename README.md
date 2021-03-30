@@ -19,14 +19,14 @@ L2 "a0002","2","0.2","b0000002"
 L3 "a0003","3","0.3","b0000003"
 L4 "a0004","4","0.4","b0000004"
 ```
-> This library is not yet stable. Any features or APIs are subject to change even if its minor version is updated.
+> This library is not yet stable. Any features or APIs are subject to change even if it's a minor version update.
 
 ## Getting started
 ### Installation
 ``` sh
 npm install dddl
 ```
-### Usage
+### Simple usage
 ``` typescript
 import { parseAndGenerate } from 'dddl';
 const sql = `
@@ -44,7 +44,7 @@ try {
 ```
 
 ## Working demo
-[Here](https://dddl-api.netlify.app/modules/datatypes.html)
+[Here](https://dddl-demo.netlify.app)
 
 ## Options
 See [API reference](https://dddl-api.netlify.app/interfaces/generator.generatoroption.html)
@@ -59,8 +59,8 @@ Currently followings are supported.
  - NOT NULL constraint
 
 ## SQL parser
-SQL syntax quite depends on DBMSs, so the create statement you have may or may not be valid for this library. <br>
-However this library basically comforms with [the ANSI standards](https://en.wikipedia.org/wiki/ISO/IEC_9075) since the parser part of this library has been translated and ported from the Rust project named [sqlparser-rs](https://github.com/ballista-compute/sqlparser-rs), which aims to comform with the standard, so hopefully the core part of your create statement (i.e. column definition) is valid for this library.
+SQL syntax quite depends on DBMS products, so the create statement you have may or may not be valid for this library. <br>
+However this library basically comforms with [the ANSI standards](https://en.wikipedia.org/wiki/ISO/IEC_9075) since the parser part of this library has been translated and ported from the Rust project named [sqlparser-rs](https://github.com/ballista-compute/sqlparser-rs), which aims to comform with the standards, so hopefully the core part of your create statement (i.e. column definition) is valid for this library.
 
 ## Lisence
 Apache License 2.0
