@@ -298,7 +298,7 @@ import {
   ParseError,
   newCsvFormat,
   newInsertStatementFormat,
-} from '../../../dist';
+} from 'dddl';
 const DDL_EXAMPLE=`create table EXAMPLE (
   id char(10) primary key,
   price decimal(10,3),

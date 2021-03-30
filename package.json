@@ -2,10 +2,11 @@
   "name": "dddl",
   "version": "0.2.0",
   "description": "dddl generates test Data from DDL",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
     "dist/"
   ],
+  "type": "module",
   "scripts": {
     "prepare": "cd demo && npm install",
     "esbuild:lib": "ts-node -P ./script/tsconfig.json ./script/build.ts",
