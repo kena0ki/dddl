@@ -1,4 +1,6 @@
 # dddl
+[![codecov](https://codecov.io/gh/kena0ki/dddl/branch/master/graph/badge.svg)](https://codecov.io/gh/kena0ki/dddl)
+
 dddl generates test Data from DDL (i.e. create table statements). <br>
 How data is generated depends on column types and options but the general idea is simple. <br>
 Generator adds 1 to previous data row by row so each column would have sequentially incremented number. <br>
