@@ -11,7 +11,6 @@ if (typeof window?.TextEncoder === 'undefined') {
   TextDecoder = window.TextDecoder;
 }
 
-type Prefix = string|((col: number, colName: string) => string);
 // type Structual<T> = T extends Function | Array<any> ? T : T extends object ? { [K in keyof T]: Structual<T[K]> } : T;
 type OmitTag<T> = Omit<T, '_tag'>;
 type Param<T> = Partial<OmitTag<T>>;
@@ -197,6 +196,7 @@ const newDecimalColumnOption = (obj?: Param<DecimalColumnOption>): DecimalColumn
 };
 export const STR_LOOP_OPTS = ['loop','keep'] as const;
 export const LENGTH_IN_OPTS = ['char','byte'] as const;
+export type Prefix = string|((col: number, colName: string) => string);
 /** StringColumnOption is used for GeneratorOption.columnOptions */
 export interface StringColumnOption {
   readonly _tag: 'StringColumnOption',
@@ -373,14 +373,13 @@ export const newBooleanColumnOption = (obj?: Param<BooleanColumnOption>): Boolea
   ...obj,
   _tag: 'BooleanColumnOption',
 });
-/** FixedValue is use for GneratorOption.columnOptions */
+/** FixedValue is used for GneratorOption.columnOptions */
 export interface FixedValue {
-  /** @internal */
   readonly _tag: 'FixedValue'
   /** The value to be set to a column */
   value: string;
 }
-export const newFixedValue = (obj: Omit<FixedValue, '_tag'>): FixedValue => ({
+export const newFixedValue = (obj: OmitTag<FixedValue>): FixedValue => ({
   ...obj,
   _tag: 'FixedValue',
 });
