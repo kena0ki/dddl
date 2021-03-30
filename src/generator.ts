@@ -2,14 +2,7 @@ import { CreateTableStatement, TableConstraint, parser, ParseError } from './par
 import { dataTypes as types } from './data-types';
 import { columnOptions as co } from './column-options';
 import { logger,add,subtract } from './util';
-let TextEncoder: typeof globalThis.TextEncoder;
-let TextDecoder: typeof globalThis.TextDecoder;
-if (typeof window?.TextEncoder === 'undefined') {
-  ({ TextEncoder, TextDecoder } = require('util'));
-} else {
-  TextEncoder = window.TextEncoder;
-  TextDecoder = window.TextDecoder;
-}
+import './text-encoder-decoder-polyfill';
 
 // type Structual<T> = T extends Function | Array<any> ? T : T extends object ? { [K in keyof T]: Structual<T[K]> } : T;
 type OmitTag<T> = Omit<T, '_tag'>;

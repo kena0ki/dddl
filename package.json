@@ -11,7 +11,7 @@
     "prepare": "cd demo && npm install",
     "esbuild:lib": "ts-node -P ./script/tsconfig.json ./script/build.ts",
     "build:lib": "tsc -p ./src/tsconfig.json --emitDeclarationOnly && npm run esbuild:lib",
-    "watch:lib": "chokidar \"src/**/*\" -c \"npm run build:lib\" --initial --debounce 5000",
+    "watch:lib": "chokidar \"src/**/*\" -c \"npm run esbuild:lib\" --initial --debounce 5000",
     "build:demo": "cd demo && npm run build",
     "build": "npm run build:lib && npm run build:demo",
     "dev:demo": "cd demo && npm run dev",

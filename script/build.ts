@@ -12,6 +12,5 @@ build({
   target: ['es2019'],
   outdir: argv.outdir || 'dist',
   format: 'esm',
-  external: ['util'],
 }).catch(() => process.exit(1));
 

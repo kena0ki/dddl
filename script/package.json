@@ -1,0 +1,3 @@
+{
+  "TODO": "ts-node throws error when `type` in package.json is `module`. So this file is needed for disabling `type:module`"
+}
