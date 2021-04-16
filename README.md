@@ -30,7 +30,7 @@ npm install dddl
 ```
 ### Simple usage
 ``` typescript
-import { parseAndGenerate } from '../dist/index.js';
+import { parseAndGenerate } from 'dddl';
 const sql = `
 create table A (
     col1 char(3)
