@@ -61,7 +61,7 @@ class ColumnOptionDef {
   ) {}
 }
 export class TableConstraint {
-  private readonly _tableConstraint = 'nominal'
+  private readonly _tableConstraint = 'nominal';
 }
 export class Unique extends TableConstraint {
   constructor(
@@ -113,7 +113,7 @@ export class ParseError extends Error {
   /**
    * @internal
    */
-  public readonly _parseError = 'nominal' // TODO public -> private
+  public readonly _parseError = 'nominal'; // TODO public -> private
 }
 
 /**
@@ -547,7 +547,7 @@ const tryParseDataType = (tokenSet: TokenSet, start: number): ParseResult<undefi
     return parseDataType(tokenSet, idx);
   } catch(err) {
     if (err instanceof ParseError
-      || '_parseError' in err // ts-node(ts-jest) incorrectly return false even if err is an instance of ParseError. so we need an extra route for it.
+      || (typeof err === 'object' && '_parseError' in err!) // ts-node(ts-jest) incorrectly return false even if err is an instance of ParseError. so we need an extra route for it.
     ) return [idx, undefined];
     throw err;
   }

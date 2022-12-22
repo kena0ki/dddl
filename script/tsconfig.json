@@ -3,9 +3,8 @@
   "compilerOptions": {
     "lib": ["esnext"],
     "module": "commonJS",
-    "outDir": "./",
-    // "strict": true,
-    // "diagnostics": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
       "**/*"

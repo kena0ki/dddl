@@ -58,26 +58,26 @@ export class DataType {
   constructor(public name: DataTypeName) {}
 }
 export class NumericType extends DataType {
-  private _numericType = 'nominal'
+  private _numericType = 'nominal' as const;
 }
 export class StringType extends DataType {
-  private _stringType = 'nominal'
+  private _stringType = 'nominal' as const;
   constructor(_name: DataTypeNameL, public length: number) { super(_name); }
 }
 export class DatetimeType extends DataType {
-  private _booleanType = 'nominal'
+  private _booleanType = 'nominal' as const;
 }
 export class BooleanType extends DataType {
-  private _datetimeType = 'nominal'
+  private _datetimeType = 'nominal' as const;
 }
 export class CharacterStringType extends StringType {
-  private _charcterStringType = 'nominal'
+  private _charcterStringType = 'nominal' as const;
 }
 export class BinaryStringType extends StringType {
-  private _binaryStringType = 'nominal'
+  private _binaryStringType = 'nominal' as const;
 }
 export class DecimalType extends NumericType {
-  private _decimalType = 'nominal'
+  private _decimalType = 'nominal' as const;
   constructor(_name: DataTypeNameOptPS, public precision?: number, public scale?: number) { super(_name); }
 }
 /**

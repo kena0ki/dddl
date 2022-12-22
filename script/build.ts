@@ -1,8 +1,10 @@
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
+import yargs from 'yargs/yargs';
 import { build } from 'esbuild';
 
-const argv = yargs(hideBin(process.argv)).argv;
+const argv = yargs(process.argv.slice(2)).options({
+  entryPoints: { type: 'string' },
+  outdir: { type: 'string' },
+}).parseSync();
 
 build({
   entryPoints: [argv.entryPoints || 'src/index.ts'],

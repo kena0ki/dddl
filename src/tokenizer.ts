@@ -182,7 +182,7 @@ export class TokenSet extends Array<Token> {
       `  ${this[0].constructor.name}: ${JSON.stringify(this[0].value)}`
     );
     return `[\n${tokens}\n]`;
-  }
+  };
   joinValues = (delim:string = ','): string => this.slice(1).reduce((prev, curr) => `${prev}${delim}${curr.value}`, this[0].value);
 }
 export const getTokenLocation = (tokenSet: TokenSet, idx: number=Infinity): [row:number,column:number] => {

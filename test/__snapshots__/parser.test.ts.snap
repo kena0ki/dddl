@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`parse 001. parse create statement: Create table 1`] = `
-Array [
+[
   CreateTableStatement {
-    "columns": Array [
+    "columns": [
       ColumnDef {
         "collation": undefined,
         "dataType": Char {
@@ -16,7 +16,7 @@ Array [
           "quoteStyle": undefined,
           "value": "id",
         },
-        "options": Array [],
+        "options": [],
       },
       ColumnDef {
         "collation": undefined,
@@ -31,7 +31,7 @@ Array [
           "quoteStyle": undefined,
           "value": "price",
         },
-        "options": Array [],
+        "options": [],
       },
       ColumnDef {
         "collation": undefined,
@@ -45,34 +45,34 @@ Array [
           "quoteStyle": undefined,
           "value": "name",
         },
-        "options": Array [],
+        "options": [],
       },
     ],
-    "constraints": Array [],
+    "constraints": [],
     "external": false,
     "fileFormat": undefined,
     "ifNotExists": false,
     "location": undefined,
     "name": ObjectName {
-      "value": Array [
+      "value": [
         Ident {
-          "quoteStyle": "\\"",
+          "quoteStyle": """,
           "value": "ITEM",
         },
       ],
     },
     "orReplace": false,
     "query": undefined,
-    "withOptions": Array [],
+    "withOptions": [],
     "withoutRowid": false,
   },
 ]
 `;
 
 exports[`parse 002. parse create statement: Create table 1`] = `
-Array [
+[
   CreateTableStatement {
-    "columns": Array [
+    "columns": [
       ColumnDef {
         "collation": undefined,
         "dataType": Varchar {
@@ -85,10 +85,12 @@ Array [
           "quoteStyle": undefined,
           "value": "name",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
-            "option": NotNull {},
+            "option": NotNull {
+              "columnoption": "nominal",
+            },
           },
         ],
       },
@@ -102,10 +104,12 @@ Array [
           "quoteStyle": undefined,
           "value": "lat",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
-            "option": Null {},
+            "option": Null {
+              "columnoption": "nominal",
+            },
           },
         ],
       },
@@ -119,7 +123,7 @@ Array [
           "quoteStyle": undefined,
           "value": "lng",
         },
-        "options": Array [],
+        "options": [],
       },
       ColumnDef {
         "collation": undefined,
@@ -131,10 +135,12 @@ Array [
           "quoteStyle": undefined,
           "value": "constrained",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
-            "option": Null {},
+            "option": Null {
+              "columnoption": "nominal",
+            },
           },
           ColumnOptionDef {
             "name": Ident {
@@ -142,24 +148,31 @@ Array [
               "value": "pkey",
             },
             "option": Unique {
+              "columnoption": "nominal",
               "isPrimary": true,
             },
           },
           ColumnOptionDef {
             "name": undefined,
-            "option": NotNull {},
+            "option": NotNull {
+              "columnoption": "nominal",
+            },
           },
           ColumnOptionDef {
             "name": undefined,
             "option": Unique {
+              "columnoption": "nominal",
               "isPrimary": false,
             },
           },
           ColumnOptionDef {
             "name": undefined,
             "option": Check {
+              "columnoption": "nominal",
               "expr": BinaryOp {
+                "_expr": "nominal",
                 "left": Identifier {
+                  "_expr": "nominal",
                   "ident": Ident {
                     "quoteStyle": undefined,
                     "value": "constrained",
@@ -169,6 +182,7 @@ Array [
                   "value": ">",
                 },
                 "right": Number {
+                  "_expr": "nominal",
                   "value": "0",
                 },
               },
@@ -186,12 +200,13 @@ Array [
           "quoteStyle": undefined,
           "value": "ref",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
             "option": Foreign {
+              "columnoption": "nominal",
               "foreignTable": ObjectName {
-                "value": Array [
+                "value": [
                   Ident {
                     "quoteStyle": undefined,
                     "value": "othertable",
@@ -200,7 +215,7 @@ Array [
               },
               "onDelete": undefined,
               "onUpdate": undefined,
-              "referredColumns": Array [
+              "referredColumns": [
                 Ident {
                   "quoteStyle": undefined,
                   "value": "a",
@@ -224,12 +239,13 @@ Array [
           "quoteStyle": undefined,
           "value": "ref2",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
             "option": Foreign {
+              "columnoption": "nominal",
               "foreignTable": ObjectName {
-                "value": Array [
+                "value": [
                   Ident {
                     "quoteStyle": undefined,
                     "value": "othertable2",
@@ -242,19 +258,19 @@ Array [
               "onUpdate": ReferencialAction {
                 "name": "NO ACTION",
               },
-              "referredColumns": Array [],
+              "referredColumns": [],
             },
           },
         ],
       },
     ],
-    "constraints": Array [],
+    "constraints": [],
     "external": false,
     "fileFormat": undefined,
     "ifNotExists": false,
     "location": undefined,
     "name": ObjectName {
-      "value": Array [
+      "value": [
         Ident {
           "quoteStyle": undefined,
           "value": "manhattan",
@@ -267,16 +283,16 @@ Array [
     },
     "orReplace": false,
     "query": undefined,
-    "withOptions": Array [],
+    "withOptions": [],
     "withoutRowid": false,
   },
 ]
 `;
 
 exports[`parse 003. parse create statement: Create table 1`] = `
-Array [
+[
   CreateTableStatement {
-    "columns": Array [
+    "columns": [
       ColumnDef {
         "collation": undefined,
         "dataType": Int {
@@ -287,12 +303,15 @@ Array [
           "quoteStyle": undefined,
           "value": "c1",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
             "option": Check {
+              "columnoption": "nominal",
               "expr": BinaryOp {
+                "_expr": "nominal",
                 "left": Identifier {
+                  "_expr": "nominal",
                   "ident": Ident {
                     "quoteStyle": undefined,
                     "value": "c1",
@@ -302,6 +321,7 @@ Array [
                   "value": ">",
                 },
                 "right": Number {
+                  "_expr": "nominal",
                   "value": "10",
                 },
               },
@@ -319,15 +339,18 @@ Array [
           "quoteStyle": undefined,
           "value": "c2",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": Ident {
               "quoteStyle": undefined,
               "value": "c2_positive",
             },
             "option": Check {
+              "columnoption": "nominal",
               "expr": BinaryOp {
+                "_expr": "nominal",
                 "left": Identifier {
+                  "_expr": "nominal",
                   "ident": Ident {
                     "quoteStyle": undefined,
                     "value": "c2",
@@ -337,6 +360,7 @@ Array [
                   "value": ">",
                 },
                 "right": Number {
+                  "_expr": "nominal",
                   "value": "0",
                 },
               },
@@ -354,12 +378,15 @@ Array [
           "quoteStyle": undefined,
           "value": "c3",
         },
-        "options": Array [
+        "options": [
           ColumnOptionDef {
             "name": undefined,
             "option": Check {
+              "columnoption": "nominal",
               "expr": BinaryOp {
+                "_expr": "nominal",
                 "left": Identifier {
+                  "_expr": "nominal",
                   "ident": Ident {
                     "quoteStyle": undefined,
                     "value": "c3",
@@ -369,6 +396,7 @@ Array [
                   "value": "<",
                 },
                 "right": Number {
+                  "_expr": "nominal",
                   "value": "100",
                 },
               },
@@ -377,11 +405,13 @@ Array [
         ],
       },
     ],
-    "constraints": Array [
+    "constraints": [
       Check {
         "_tableConstraint": "nominal",
         "expr": BinaryOp {
+          "_expr": "nominal",
           "left": Identifier {
+            "_expr": "nominal",
             "ident": Ident {
               "quoteStyle": undefined,
               "value": "c1",
@@ -391,6 +421,7 @@ Array [
             "value": "<>",
           },
           "right": Number {
+            "_expr": "nominal",
             "value": "0",
           },
         },
@@ -405,7 +436,7 @@ Array [
     "ifNotExists": false,
     "location": undefined,
     "name": ObjectName {
-      "value": Array [
+      "value": [
         Ident {
           "quoteStyle": undefined,
           "value": "t1",
@@ -414,7 +445,7 @@ Array [
     },
     "orReplace": false,
     "query": undefined,
-    "withOptions": Array [],
+    "withOptions": [],
     "withoutRowid": false,
   },
 ]

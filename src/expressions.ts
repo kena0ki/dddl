@@ -3,7 +3,7 @@ import { BinaryOperator, UnaryOperator } from './operators';
 import { Ident, ObjectName } from './parser';
 
 export class Expr {
-  private _expr:void
+  private _expr = "nominal" as const;
   constructor() {}
 }
 export class UnaryOp extends Expr {

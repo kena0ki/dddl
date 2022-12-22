@@ -2,7 +2,7 @@ import { ObjectName, Ident, ReferencialAction } from './parser';
 import { Expr } from './expressions';
 
 export class ColumnOption {
-  private columnoption: never
+  private columnoption = 'nominal' as const;
   constructor() {}
 }
 export class NotNull extends ColumnOption {}

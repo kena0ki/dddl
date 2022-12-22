@@ -16,8 +16,8 @@ TokenSet [
   },
   DelimitedIdent {
     "_content": "ITEM",
-    "_delimiter": "\\"",
-    "_value": "\\"ITEM\\"",
+    "_delimiter": """,
+    "_value": ""ITEM"",
   },
   Whitespace {
     "_value": " ",
@@ -500,7 +500,7 @@ TokenSet [
 exports[`tokenize 003. tokenize operators: operators 1`] = `
 TokenSet [
   Operator {
-    "_value": "\\\\",
+    "_value": "\\",
   },
   Operator {
     "_value": "[",
