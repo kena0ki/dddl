@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -10,6 +11,10 @@ export default defineConfig({
     target: 'es2020',
     // minify: false,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        nested: resolve(__dirname, 'googleb3551cc7d98e05a3.html'),
+      },
       output: {
         manualChunks: {
           jsonWorker: [`${prefix}/language/json/json.worker`],
